@@ -1,25 +1,15 @@
-#include <time.h>
 #include <Python.h>
-#include "pytime.h"
+#include <object.h>
+#include <listobject.h>
 
-/**
- * print_python_list_info - prints info about Python lists
- * @p: Python Object
- * Return: 0 if it is not a palindrome, 1 if it is a palindrome
- */
 void print_python_list_info(PyObject *p)
 {
-	long int list_size, alloc_list, i;
-	PyObject *item;
+	long int size = PyList_Size(p);
+	int y;
+	PyListObject *obj = (PyListObject *)p;
 
-	list_size = PyList_Size(p);
-	alloc_list = ((PyListObject *)p)->allocated;
-
-	printf("[*] Size of the Python List = %ld\n", list_size);
-	printf("[*] Allocated = %ld\n", alloc_list);
-	for (i = 0; i < list_size; i++)
-	{
-		item = PyList_GetItem(p, i);
-		printf("Element %ld: %s\n", i, Py_TYPE(item)->tp_name);
-	}
+	printf("[*] Size of the Python List = %li\n", size);
+	printf("[*] Allocated = %li\n", obj->alloacted);
+	for (y = 0; y < size; y++)
+		printf("Element %y: %s\n", y, Py_TYPE(obj->ob_item[y])->tp_name);
 }
