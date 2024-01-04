@@ -1,0 +1,59 @@
+# Test cases for text_indentation function
+==========================================
+
+The text_indentation function prints a text with 2 new lines after each of these characters: ., ? and :.
+
+Test Cases
+==========
+
+# Import "text_indentation" from the "5-text_indentation" module
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Test 1: Basic test with punctuation
+>>> text_indentation("Hello. How are you? I am fine: Thank you!")
+Hello.
+<BLANKLINE>
+How are you?
+<BLANKLINE>
+I am fine:
+<BLANKLINE>
+Thank you!
+
+# Test 2: Text without punctuation
+>>> text_indentation("This is a test.")
+This is a test.
+
+# Test 3: Punctuation without spaces
+>>> text_indentation("NoSpacesHere: This.is: a test.")
+NoSpacesHere:
+<BLANKLINE>
+This.
+<BLANKLINE>
+is:
+<BLANKLINE>
+a test.
+
+# Test 4: Printing text with sentences separated by question marks
+>>> text_indentation("How are you today? What do you think?")
+How are you today?
+<BLANKLINE>
+What do you think?
+<BLANKLINE>
+
+# Test 5: Empty input text
+>>> text_indentation("")
+
+# Test 6: Input with spaces at the beginning and end of lines
+>>> text_indentation("   This has   spaces at   the edges.   ")
+This has   spaces at   the edges.
+
+# Test 7: Input with a single character
+>>> text_indentation("X")
+X
+
+# Test 8: Input with no spaces or punctuation
+>>> text_indentation("NoSpacesOrPunctuation")
+NoSpacesOrPunctuation
+
+# Test 9: Input with only spaces
+>>> text_indentation("         ")
